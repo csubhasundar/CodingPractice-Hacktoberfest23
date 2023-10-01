@@ -3,7 +3,7 @@ Repository totally dedicated to Hacktober Fest 2023, feel free to use it. Topics
 
 <p align="center">
     <a href="https://hacktoberfest.com/" target="_blank">
-    	<img src="https://res.cloudinary.com/practicaldev/image/fetch/s--ds97LCK---/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ymlmr15l83rrjq8natft.jpg" width="800px" height="400px">
+    	<img src=![image](https://github.com/csubhasundar/CodingPractice-Hacktoberfest23/assets/72214531/c9481751-6b9e-4ff6-b2dc-df6470cdba1a)>
     </a>
 </p>
 
