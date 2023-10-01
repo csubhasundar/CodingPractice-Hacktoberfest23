@@ -1,68 +1,71 @@
-// C code to implement quicksort
+// C++ Implementation of the Quick Sort Algorithm.
+#include <iostream>
+using namespace std;
 
-#include <stdio.h>
-
-// Function to swap two elements
-void swap(int* a, int* b)
+int partition(int arr[], int start, int end)
 {
-	int t = *a;
-	*a = *b;
-	*b = t;
-}
 
-// Partition the array using the last element as the pivot
-int partition(int arr[], int low, int high)
-{
-	// Choosing the pivot
-	int pivot = arr[high];
+	int pivot = arr[start];
 
-	// Index of smaller element and indicates
-	// the right position of pivot found so far
-	int i = (low - 1);
+	int count = 0;
+	for (int i = start + 1; i <= end; i++) {
+		if (arr[i] <= pivot)
+			count++;
+	}
 
-	for (int j = low; j <= high - 1; j++) {
+	// Giving pivot element its correct position
+	int pivotIndex = start + count;
+	swap(arr[pivotIndex], arr[start]);
 
-		// If current element is smaller than the pivot
-		if (arr[j] < pivot) {
+	// Sorting left and right parts of the pivot element
+	int i = start, j = end;
 
-			// Increment index of smaller element
+	while (i < pivotIndex && j > pivotIndex) {
+
+		while (arr[i] <= pivot) {
 			i++;
-			swap(&arr[i], &arr[j]);
+		}
+
+		while (arr[j] > pivot) {
+			j--;
+		}
+
+		if (i < pivotIndex && j > pivotIndex) {
+			swap(arr[i++], arr[j--]);
 		}
 	}
-	swap(&arr[i + 1], &arr[high]);
-	return (i + 1);
+
+	return pivotIndex;
 }
 
-// The main function that implements QuickSort
-// arr[] --> Array to be sorted,
-// low --> Starting index,
-// high --> Ending index
-void quickSort(int arr[], int low, int high)
+void quickSort(int arr[], int start, int end)
 {
-	if (low < high) {
 
-		// pi is partitioning index, arr[p]
-		// is now at right place
-		int pi = partition(arr, low, high);
+	// base case
+	if (start >= end)
+		return;
 
-		// Separately sort elements before
-		// partition and after partition
-		quickSort(arr, low, pi - 1);
-		quickSort(arr, pi + 1, high);
-	}
+	// partitioning the array
+	int p = partition(arr, start, end);
+
+	// Sorting the left part
+	quickSort(arr, start, p - 1);
+
+	// Sorting the right part
+	quickSort(arr, p + 1, end);
 }
 
-// Driver code
 int main()
 {
-	int arr[] = { 10, 7, 8, 9, 1, 5 };
-	int N = sizeof(arr) / sizeof(arr[0]);
 
-	// Function call
-	quickSort(arr, 0, N - 1);
-	printf("Sorted array: \n");
-	for (int i = 0; i < N; i++)
-		printf("%d ", arr[i]);
+	int arr[] = { 9, 3, 4, 2, 1, 8 };
+	int n = 6;
+
+	quickSort(arr, 0, n - 1);
+
+	for (int i = 0; i < n; i++) {
+		cout << arr[i] << " ";
+	}
+
 	return 0;
 }
