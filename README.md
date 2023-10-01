@@ -25,7 +25,7 @@ Choose both, make a pull request for your work and wait for it to be merged!!
 * Clone your fork down to your local machine.
 
 ```markdown
-git clone https://github.com/csubhasundar/CodingPractice-Hacktoberfest23
+[git clone https://github.com/csubhasundar/CodingPractice-Hacktoberfest23](https://github.com/csubhasundar/CodingPractice-Hacktoberfest23/tree/main)
 ```
 
 * Create a branch
