@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int main() {
+  printf("Pattern of stars:\n");
+  for (int i = 0; i < 5; i++) {
+    for (int j = 0; j <= i; j++) {
+      printf("*");
+    }
+    printf("\n");
+  }
+
+  printf("\nPattern of numbers:\n");
+  for (int i = 0; i < 5; i++) {
+    for (int j = 0; j <= i; j++) {
+      printf("%d", j);
+    }
+    printf("\n");
+  }
+
+  printf("\nPattern of characters:\n");
+  for (int i = 0; i < 5; i++) {
+    for (int j = 0; j <= i; j++) {
+      printf("%c", 'a' + j);
+    }
+    printf("\n");
+  }
+
+  return 0;
+}
