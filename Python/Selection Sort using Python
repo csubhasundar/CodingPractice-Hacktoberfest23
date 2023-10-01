@@ -1,0 +1,12 @@
+def SelectionSort(arr):
+    for i in range(len(arr)):
+        smallest = i
+        for j in range(i, len(arr)):
+            if arr[j] < arr[smallest]:
+                smallest = j
+        arr[i], arr[smallest] = arr[smallest], arr[i]
+    return arr
+
+arr = [6,8,3,9,68,37,27]
+
+SelectionSort(arr)
