@@ -14,7 +14,7 @@ Contribute between: <h4>1 OCTOBER - 31 OCTOBER</h4>
 
 Create a Pull request and add any feature update to the repository.
 
-* [Click here to register for hacktoberfest2022.](https://hacktoberfest.com/)
+* [Click here to register for hacktoberfest2023.](https://hacktoberfest.com/)
 
 ## How to contribute to this project?
 
@@ -25,7 +25,7 @@ Choose both, make a pull request for your work and wait for it to be merged!!
 * Clone your fork down to your local machine.
 
 ```markdown
-[git clone https://github.com/csubhasundar/CodingPractice-Hacktoberfest23](https://github.com/csubhasundar/CodingPractice-Hacktoberfest23/tree/main)
+[git clone https:[//github.com/csubhasundar/CodingPractice-Hacktoberfest23](https://github.com/csubhasundar/CodingPractice-Hacktoberfest23/tree/main)](https://github.com/csubhasundar/CodingPractice-Hacktoberfest23)
 ```
 
 * Create a branch
