@@ -8,6 +8,21 @@ def InsertionSort(arr):
         arr[j + 1] = current      
     return arr
 
-arr = [7,5,4,9,30,2]
+def main():
+    # Ask the user for the number of elements
+    n = int(input("Enter the number of elements: "))
 
-InsertionSort(arr)
+    arr = []  # Empty list to store the elements
+
+    # Loop through n times to get the elements from the user
+    for i in range(n):
+        element = int(input(f"Enter element {i+1}: "))
+        arr.append(element)
+
+    # Call the InsertionSort function and print the sorted list
+    sorted_arr = InsertionSort(arr)
+    print("Sorted array:", sorted_arr)
+
+if __name__ == "__main__":
+    main()
+
