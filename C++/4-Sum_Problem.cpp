@@ -1,75 +1,79 @@
-#include<bits/stdc++.h>
-using namespace std;
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
 class Solution {
 public:
-    vector<vector<int>> fourSum(vector<int>& num, int target) {
-         vector<vector<int> > res;
+    std::vector<std::vector<int>> fourSum(std::vector<int>& nums, int target) {
+        std::vector<std::vector<int>> result;
         
-        if (num.empty())
-            return res;
-        int n = num.size(); 
-        sort(num.begin(),num.end());
+        if (nums.empty()) {
+            return result;
+        }
+        
+        int n = nums.size();
+        std::sort(nums.begin(), nums.end());
     
         for (int i = 0; i < n; i++) {
-        
-            int target_3 = target - num[i];
+            int target_3 = target - nums[i];
         
             for (int j = i + 1; j < n; j++) {
-            
-                int target_2 = target_3 - num[j];
-            
+                int target_2 = target_3 - nums[j];
                 int front = j + 1;
                 int back = n - 1;
             
-                while(front < back) {
+                while (front < back) {
+                    int two_sum = nums[front] + nums[back];
                 
-                    int two_sum = num[front] + num[back];
-                
-                    if (two_sum < target_2) front++;
-                
-                    else if (two_sum > target_2) back--;
-                
-                    else {
+                    if (two_sum < target_2) {
+                        front++;
+                    } else if (two_sum > target_2) {
+                        back--;
+                    } else {
+                        std::vector<int> quadruplet(4, 0);
+                        quadruplet[0] = nums[i];
+                        quadruplet[1] = nums[j];
+                        quadruplet[2] = nums[front];
+                        quadruplet[3] = nums[back];
+                        result.push_back(quadruplet);
                     
-                        vector<int> quadruplet(4, 0);
-                        quadruplet[0] = num[i];
-                        quadruplet[1] = num[j];
-                        quadruplet[2] = num[front];
-                        quadruplet[3] = num[back];
-                        res.push_back(quadruplet);
+                        while (front < back && nums[front] == quadruplet[2]) {
+                            front++;
+                        }
                     
-                        // Processing the duplicates of number 3
-                        while (front < back && num[front] == quadruplet[2]) ++front;
-                    
-                        // Processing the duplicates of number 4
-                        while (front < back && num[back] == quadruplet[3]) --back;
-                
+                        while (front < back && nums[back] == quadruplet[3]) {
+                            back--;
+                        }
                     }
                 }
                 
-                // Processing the duplicates of number 2
-                while(j + 1 < n && num[j + 1] == num[j]) ++j;
+                while (j + 1 < n && nums[j + 1] == nums[j]) {
+                    j++;
+                }
             }
         
-            // Processing the duplicates of number 1
-            while (i + 1 < n && num[i + 1] == num[i]) ++i;
-        
+            while (i + 1 < n && nums[i + 1] == nums[i]) {
+                i++;
+            }
         }
     
-        return res;
+        return result;
     }
 };
 
-int main()
-{
+int main() {
     Solution obj;
-    vector<int> v{1,0,-1,0,-2,2};
+    std::vector<int> v{1, 0, -1, 0, -2, 2};
     
-    vector<vector<int>> sum=obj.fourSum(v,0);
-    cout<<"The unique quadruplets are"<<endl;
+    std::vector<std::vector<int>> sum = obj.fourSum(v, 0);
+    std::cout << "The unique quadruplets are" << std::endl;
+    
     for (int i = 0; i < sum.size(); i++) {
-        for (int j = 0; j < sum[i].size(); j++)
-            cout << sum[i][j] << " ";
-        cout << endl;
+        for (int j = 0; j < sum[i].size(); j++) {
+            std::cout << sum[i][j] << " ";
+        }
+        std::cout << std::endl;
     }
+    
+    return 0;
 }
