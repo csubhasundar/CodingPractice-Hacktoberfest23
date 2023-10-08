@@ -1,0 +1,11 @@
+from random import*
+import random  #randomizes numbers
+
+print("Save Time | Let me help with select your next Lotto Numbers")
+
+x=[]
+for i in range (6): #prints 6 numbers. This can be changed to suit the numbers needed for lotto
+    rnum=randrange(1,46) #makes sure that 0 is not printed
+    if rnum not in x:  #ensures there is no repeat of a number
+        x.append(rnum)
+print(x)
