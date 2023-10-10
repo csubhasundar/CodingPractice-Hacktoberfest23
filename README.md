@@ -21,26 +21,30 @@ Create a Pull request and add any feature update to the repository.
 Choose both, make a pull request for your work and wait for it to be merged!! 
 
 ## Getting started
-* Fork this repository (Click the Fork button in the top right of this page, click your Profile Image)
-* Clone your fork down to your local machine.
+- Fork this Repository using the button at the top on right corner.
+- Clone your forked repository to your pc ( git clone "url from clone option.)
+- Create a new branch for your modifications (ie. `git branch new-user` and check it out `git checkout new-user` or simply do `git checkout -b new-user`)
+- Add your files (`git add -A`), commit (`git commit -m "added myself"`) and push (`git push origin new-user`)
+- Make your changes in "Python/C/C++/Java" folder.
+- Create a pull request
+- Star this repository
 
-```markdown
-[git clone https:[//github.com/csubhasundar/CodingPractice-Hacktoberfest23](https://github.com/csubhasundar/CodingPractice-Hacktoberfest23/tree/main)](https://github.com/csubhasundar/CodingPractice-Hacktoberfest23)
+##  Wait for Pull Request to merge
+
+##  Celebrate - you've done your first pull request!!
+
+
+```py
+'''
+Always make more then 4 pull requests.
+Lets say you have made only 4 pull request to different projects,
+but one project is excluded from hackoctoberfest event then your pull request will not be counted and 
+then you have remaining 3 valid pull requests if these projects is not excluded.
+If you fail to make 4 pull requests then you can't get digital-swags.
+I will recommend you to make pull request to your own repo which is very very safest side for you..
+keep in mind that repo has hacktoberfest topic..
+'''
 ```
-
-* Create a branch
-
-```markdown
-git checkout -b your-branch-name
-```
-
-* Make your changes in "Python/C/C++/Java" folder.
-* Commit and push your code.
-
-
-* Create a new pull request from your forked repository (Click the `New Pull Request` button located at the top of your repo)
-* Wait for your PR review and merge approval...
-* __Star this repository__ if you had fun contributing!
 
 
 ## A BIG Thanks To Our Contributors :handshake: :handshake:
