@@ -1,61 +1,86 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <string>
+
 using namespace std;
 
-int x[] = {-1, -1, -1, 0, 0, 1, 1, 1};
-int y[] = {-1, 0, 1, -1, 1, -1, 0, 1};
+const int dirs[8][2] = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
 
-bool search2D(char *grid, int row, int col,
-              string word, int R, int C)
+bool search2D(vector<string> &grid, int row, int col,
+              const string &word, int gridRows, int gridCols)
 {
-    if (*(grid + row * C + col) != word[0])
+
+    if (grid[row][col] != word[0])
+    {
         return false;
+    }
 
-    int len = word.length();
+    int wordLen = word.length();
 
-    for (int dir = 0; dir < 8; dir++)
+    for (auto dir : dirs)
     {
 
-        int k, rd = row + x[dir], cd = col + y[dir];
+        int r = row + dir[0];
+        int c = col + dir[1];
+        bool found = true;
 
-        for (k = 1; k < len; k++)
+        for (int i = 1; i < wordLen; i++)
         {
 
-            if (rd >= R || rd < 0 || cd >= C || cd < 0)
+            if (r >= gridRows || r < 0 || c >= gridCols || c < 0)
+            {
+                found = false;
                 break;
+            }
 
-            if (*(grid + rd * C + cd) != word[k])
+            if (grid[r][c] != word[i])
+            {
+                found = false;
                 break;
+            }
 
-            rd += x[dir], cd += y[dir];
+            r += dir[0];
+            c += dir[1];
         }
 
-        if (k == len)
+        if (found)
+        {
             return true;
+        }
     }
+
     return false;
 }
 
-void patternSearch(char *grid, string word,
-                   int R, int C)
+void searchPattern(vector<string> &grid, const string &word,
+                   int gridRows, int gridCols)
 {
-    for (int row = 0; row < R; row++)
-        for (int col = 0; col < C; col++)
-            if (search2D(grid, row, col, word, R, C))
-                cout << "pattern found at "
-                     << row << ", "
-                     << col << endl;
+
+    for (int r = 0; r < gridRows; r++)
+    {
+        for (int c = 0; c < gridCols; c++)
+        {
+            if (search2D(grid, r, c, word, gridRows, gridCols))
+            {
+                cout << "Pattern found at " << r << ", " << c << "\n";
+            }
+        }
+    }
 }
 
 int main()
 {
-    int R = 3, C = 13;
-    char grid[R][C] = {"THISISAFUNPROGRAM",
-                       "WELEARNTHROGHCODE",
-                       "CODINGISVERYFUNEE"};
 
-    patternSearch((char *)grid, "FUN", R, C);
-    cout << endl;
-    patternSearch((char *)grid, "CODING", R, C);
+    vector<string> grid{
+        "THISISAFUNPROGRAM",
+        "WELEARNTHROGHCODE",
+        "CODINGISVERYFUNEE"};
+
+    searchPattern(grid, "FUN", 3, 13);
+
+    cout << "\n";
+
+    searchPattern(grid, "CODING", 3, 13);
 
     return 0;
 }
