@@ -1,0 +1,10 @@
+import requests
+from bs4 import BeautifulSoup
+
+url = "https://example.com"
+response = requests.get(url)
+soup = BeautifulSoup(response.text, "html.parser")
+
+# Extract and print the title of the webpage
+title = soup.title.string
+print("Title: " + title)
