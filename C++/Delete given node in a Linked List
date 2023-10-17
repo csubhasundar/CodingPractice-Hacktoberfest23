@@ -1,0 +1,8 @@
+void deleteNode(ListNode* node) {
+        swap(node->val,node->next->val);
+        ListNode* toremove=node->next;
+        node->next=node->next->next;
+        toremove->next=NULL;
+        delete(toremove);
+        
+    }
