@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/vlpvg/hactoberfest-2k23/CodingPractice-Hacktoberfest23",
-      "program": "c:/Users/vlpvg/hactoberfest-2k23/CodingPractice-Hacktoberfest23/build/Debug/outDebug",
+      "cwd": "c:/Users/DELL/Desktop/Quick Sort/CodingPractice-Hacktoberfest23",
+      "program": "c:/Users/DELL/Desktop/Quick Sort/CodingPractice-Hacktoberfest23/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
