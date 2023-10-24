@@ -1,5 +1,5 @@
 #include<stdio.h>
-void main()
+int main()
 {
 	int a[10],n,i,ele;
 	printf("Enter size of array : ");
@@ -19,5 +19,6 @@ void main()
 		}
 		else if(i==n-1&&a[i]!=ele)
 		printf("Element not found");
-}
+	}
+	return 0;
 }
