@@ -1,14 +1,15 @@
 #include<stdio.h>
-void main()
+int main()
 {
-	int a[5],n,i,j,temp;
+	int n,i,j,temp;
 	printf("Enter size of array : ");
 	scanf("%d",&n);
+	int a[n];
 	printf("Enter %d elements ",n);
 	for(i=0;i<n;i++)
 	scanf("%d",&a[i]);
 	
-	for(i=5;i>1;i--)
+	for(i=n;i>1;i--)
 	{
 		for(j=0;j<i-1;j++)
 		{
@@ -24,4 +25,5 @@ void main()
 	printf("Array after sorting\n");
 	for(i=0;i<n;i++)
 	printf("%d ",a[i]);
+	return 0;
 }
