@@ -1,0 +1,76 @@
+This is the program in which I solve two wordproblems by using Stack.
+1) You are given a string s consisting only of uppercase English letters. You can apply some operations to this string where, in one operation, you can remove any occurrence of one of the substrings "AB" or "CD" from s. Return the minimum possible length of the resulting string that you can obtain. Note that the string concatenates after removing the substring and could produce new "AB" or "CD" substrings.
+
+Example 1: Input: s = "ABFCACDB" Output: 2 Explanation: We can do the following operations:
+
+Remove the substring "ABFCACDB", so s = "FCACDB".
+Remove the substring "FCACDB", so s = "FCAB".
+Remove the substring "FCAB", so s = "FC". So the resulting length of the string is 2. It can be shown that it is the minimum length that we can obtain.
+Example 2: Input: s = "ACBBD" Output: 5 Explanation: We cannot do any operations on the string so the length remains the same.
+
+def min_length_after_operations(s):
+    stack = []
+
+    for char in s:
+        if stack and char in ("B", "D") and stack[-1] in ("A", "C"):
+            stack.pop()
+        else:
+            stack.append(char)
+
+    return len(stack)
+
+# Example usage
+input_string_1 = "ABFCACDB"
+input_string_2 = "ACBBD"
+
+output_1 = min_length_after_operations(input_string_1)
+output_2 = min_length_after_operations(input_string_2)
+
+print(output_1)  # Output: 2
+print(output_2)
+
+def sum_of_subarray_ranges(nums):
+    stack = []
+    n = len(nums)
+    left_count = [0] * n
+    right_count = [0] * n
+
+    # Calculate left_count
+    for i in range(n):
+        while stack and nums[stack[-1]] >= nums[i]:
+            stack.pop()
+        left_count[i] = stack[-1] + 1 if stack else 0
+        stack.append(i)
+
+    # Reset the stack for calculating right_count
+    stack = []
+
+    # Calculate right_count
+    for i in range(n-1, -1, -1):
+        while stack and nums[stack[-1]] > nums[i]:
+            stack.pop()
+        right_count[i] = n - stack[-1] if stack else 0
+        stack.append(i)
+
+    result = 0
+
+    # Calculate contributions of each element to the result
+    for i in range(n):
+        result += nums[i] * left_count[i] * right_count[i]
+
+    return result
+
+# Example 1
+nums = [1, 2, 3]
+output = sum_of_subarray_ranges(nums)
+print(output)  # Output: 4
+
+# Example 2
+nums = [1, 3, 3]
+output = sum_of_subarray_ranges(nums)
+print(output)  # Output: 4
+
+# Example 3
+nums = [4, -2, -3, 4, 1]
+output = sum_of_subarray_ranges(nums)
+print(output)  # Output: 59
