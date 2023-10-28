@@ -1,0 +1,48 @@
+import mediapipe as mp #to detect hand and draw the landmarks accordingly
+import cv2 #to continueously capture input images
+import uuid #to rename each image uniquely while saving
+import os #to creat and modify folder in storage
+
+mp_drawing = mp.solutions.drawing_utils #to draw patterns
+mp_hands = mp.solutions.hands #to recognise hands in input image
+
+cap = cv2.VideoCapture(0)
+
+with mp_hands.Hands(min_detection_confidence=0.8, min_tracking_confidence=0.5, max_num_hands = 2) as hands: 
+    while cap.isOpened():
+        ret, frame = cap.read()
+        
+        # BGR_Image to RGB_Image
+        hand_image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        
+        # Flip Image horizontal
+        hand_image = cv2.flip(hand_image, 1)
+        
+        hand_image.flags.writeable = False
+        
+        # Results
+        results = hands.process(hand_image)
+        
+        hand_image.flags.writeable = True
+        
+        # RGB_Image to BGR_Image
+        hand_image = cv2.cvtColor(hand_image, cv2.COLOR_RGB2BGR)
+        
+        #print(results)
+        
+        # Rendering Results
+        if results.multi_hand_landmarks:
+            for num, hand in enumerate(results.multi_hand_landmarks):
+                mp_drawing.draw_landmarks(hand_image, hand, mp_hands.HAND_CONNECTIONS, 
+                                        mp_drawing.DrawingSpec(color=(121, 22, 76), thickness=2, circle_radius=2),
+                                        mp_drawing.DrawingSpec(color=(50, 184, 150), thickness=2, circle_radius=2),
+                                         )
+            
+        
+        cv2.imshow('Continueous Image with Hand Tracking', hand_image)
+
+        if cv2.waitKey(10) & 0xFF == ord('q'):
+            break
+
+cap.release()
+cv2.destroyAllWindows()
