@@ -1,0 +1,9 @@
+import pywhatkit as pw
+import pyautogui
+import time
+time.sleep(3)
+count = 0
+while count<=100:
+    pyautogui.typewrite("This is Rubbish, Nothing but a Rubbish")
+    pyautogui.press("enter")
+    count+=1
